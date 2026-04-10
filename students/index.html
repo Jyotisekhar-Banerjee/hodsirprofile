@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Students - Dr. Jyoti Sekhar Banerjee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; color: var(--text-primary); border-bottom: 2px solid var(--accent); padding-bottom: 1rem; }
+        
+        .tabs-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+            position: relative;
+            top: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+        
+        .tab-btn:hover {
+            color: var(--accent);
+            text-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+        }
+        
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            text-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .students-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .student-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .student-card:hover {
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        
+        .student-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), rgba(16, 185, 129, 0.5));
+        }
+        
+        .student-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .student-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .student-meta {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .badge {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--accent);
+        }
+        
+        .student-info {
+            margin-bottom: 1rem;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 0.6rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .info-icon {
+            color: var(--accent);
+            margin-right: 0.8rem;
+            min-width: 20px;
+            flex-shrink: 0;
+        }
+        
+        .student-actions {
+            display: flex;
+            gap: 0.8rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            margin-top: 1rem;
+        }
+        
+        .action-btn {
+            flex: 1;
+            background-color: var(--accent);
+            color: #000;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .action-btn:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.05);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header class="mobile-header">
+        <h2 class="logo">Dr. J. S. Banerjee</h2>
+        <button class="menu-btn"><i class="fas fa-bars"></i></button>
+    </header>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="name">Dr. Jyoti Sekhar Banerjee</h2>
+            <p class="title">Associate Professor & Head, CSE (AI & ML)</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../about/index.html" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../gallery/index.html" class="nav-link"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../awards/index.html" class="nav-link"><i class="fas fa-award"></i> <span>Awards</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../research/index.html" class="nav-link"><i class="fab fa-researchgate"></i> <span>Research</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../positions/index.html" class="nav-link"><i class="fas fa-briefcase"></i> <span>Positions</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../projects/index.html" class="nav-link"><i class="fas fa-project-diagram"></i> <span>Projects</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../resources/index.html" class="nav-link"><i class="fas fa-file-alt"></i> <span>Resources</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../academic/index.html" class="nav-link"><i class="fas fa-graduation-cap"></i> <span>Academic</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../publications/index.html" class="nav-link"><i class="fas fa-book"></i> <span>Publications</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../invited-talks/index.html" class="nav-link"><i class="fas fa-microphone-alt"></i> <span>Invited Talks</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../workshop/index.html" class="nav-link"><i class="fas fa-laptop"></i> <span>Workshop</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="index.html" class="nav-link active"><i class="fas fa-users"></i> <span>My Students</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../contact/index.html" class="nav-link"><i class="fas fa-file-signature"></i> <span>Contact</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="theme-toggle-wrap">
+                <span class="theme-toggle-text">Theme</span>
+                <label class="switch" for="theme-switch">
+                    <input type="checkbox" id="theme-switch">
+                    <div class="slider"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></div>
+                </label>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-google"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <main class="main-content">
+        <section class="section fade-in">
+            <div style="padding: 2rem;">
+                <h1 class="section-title"><i class="fas fa-graduation-cap"></i> My Students</h1>
+                
+                <div class="tabs-container">
+                    <button class="tab-btn active" data-target="phd">
+                        <i class="fas fa-book"></i> PhD Scholars
+                    </button>
+                    <button class="tab-btn" data-target="mtech">
+                        <i class="fas fa-graduation-cap"></i> M.Tech Students
+                    </button>
+                    <button class="tab-btn" data-target="btech">
+                        <i class="fas fa-user-graduate"></i> B.Tech Students
+                    </button>
+                </div>
+
+                <!-- PhD TAB -->
+                <div id="phd" class="tab-content active">
+                    <div class="students-grid">
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Abhay Alok</div>
+                                    <div class="student-meta">
+                                        <span class="badge">PhD 2016</span>
+                                        <span class="badge">Graduated</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Research:</strong> Semi-supervised Clustering in Multiobjective Optimization Framework</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-briefcase"></i></span>
+                                    <span><strong>Current:</strong> Senior Data Scientist at Electronic Arts (EA)</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Dr. Utpal Sikdar</div>
+                                    <div class="student-meta">
+                                        <span class="badge">PhD 2016</span>
+                                        <span class="badge">Co-supervised</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Research:</strong> Evolutionary Approach for Entity Extraction and Anaphora Resolution</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-briefcase"></i></span>
+                                    <span><strong>Current:</strong> Data Scientist at IBS Software Solutions</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Dr. Sumit Mishra</div>
+                                    <div class="student-meta">
+                                        <span class="badge">PhD 2017</span>
+                                        <span class="badge">Co-supervised</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Research:</strong> Development and Analysis of Entity Matching Techniques using Evolutionary Algorithms</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-briefcase"></i></span>
+                                    <span><strong>Current:</strong> Faculty at National Institute of Technology Warangal</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Dr. Sudipta Acharya</div>
+                                    <div class="student-meta">
+                                        <span class="badge">PhD 2018</span>
+                                        <span class="badge">Graduated</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Research:</strong> Multi-objective clustering frameworks for solving real-life problems</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-briefcase"></i></span>
+                                    <span><strong>Current:</strong> Postdoctoral Researcher at Queen's University, Canada</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Vikram Reddy</div>
+                                    <div class="student-meta">
+                                        <span class="badge">PhD 2019</span>
+                                        <span class="badge">Ongoing</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Research:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> 3rd year research, Expected completion 2025</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Anjali Gupta</div>
+                                    <div class="student-meta">
+                                        <span class="badge">PhD 2020</span>
+                                        <span class="badge">Ongoing</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Research:</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> 2nd year research, Expected completion 2026</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- M.TECH TAB -->
+                <div id="mtech" class="tab-content">
+                    <div class="students-grid">
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Arjun Kumar</div>
+                                    <div class="student-meta">
+                                        <span class="badge">M.Tech 2023</span>
+                                        <span class="badge">Graduated</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Thesis:</strong> Deep Learning for Image Classification</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-briefcase"></i></span>
+                                    <span><strong>Current:</strong> ML Engineer at Tech Startup</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Priya Singh</div>
+                                    <div class="student-meta">
+                                        <span class="badge">M.Tech 2024</span>
+                                        <span class="badge">Ongoing</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Thesis:</strong> NLP for Sentiment Analysis</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> Research ongoing, Expected graduation 2024</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Rohan Patel</div>
+                                    <div class="student-meta">
+                                        <span class="badge">M.Tech 2024</span>
+                                        <span class="badge">Ongoing</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Thesis:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> Thesis submission in progress, Expected graduation Dec 2024</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Meera Sharma</div>
+                                    <div class="student-meta">
+                                        <span class="badge">M.Tech 2025</span>
+                                        <span class="badge">Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-microscope"></i></span>
+                                    <span><strong>Thesis:</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> 1st year, Expected graduation 2025</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B.TECH TAB -->
+                <div id="btech" class="tab-content">
+                    <div class="students-grid">
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Rahul Patel</div>
+                                    <div class="student-meta">
+                                        <span class="badge">B.Tech 2024</span>
+                                        <span class="badge">Final Year</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-project-diagram"></i></span>
+                                    <span><strong>Project:</strong> Machine Learning for Stock Price Prediction</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> Final Year, Graduation: June 2024</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Neha Sharma</div>
+                                    <div class="student-meta">
+                                        <span class="badge">B.Tech 2025</span>
+                                        <span class="badge">3rd Year</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-code"></i></span>
+                                    <span><strong>Interest:</strong> Artificial Intelligence & Data Science</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> 3rd Year Student</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Aditya Verma</div>
+                                    <div class="student-meta">
+                                        <span class="badge">B.Tech 2024</span>
+                                        <span class="badge">Final Year</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-project-diagram"></i></span>
+                                    <span><strong>Project:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> Final Year Project, Graduation: May 2024</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Sonal Joshi</div>
+                                    <div class="student-meta">
+                                        <span class="badge">B.Tech 2025</span>
+                                        <span class="badge">3rd Year</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-code"></i></span>
+                                    <span><strong>Interest:</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> 3rd Year Student, Strong CGPA: 8.5</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-header">
+                                <div>
+                                    <div class="student-name">Davit Chakraborty</div>
+                                    <div class="student-meta">
+                                        <span class="badge">B.Tech 2026</span>
+                                        <span class="badge">2nd Year</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-info">
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-code"></i></span>
+                                    <span><strong>Interest:</strong> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <span><strong>Status:</strong> 2nd Year Student, CGPA: 8.2</span>
+                                </div>
+                            </div>
+                            <div class="student-actions">
+                                <a href="https://linkedin.com" target="_blank" class="action-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="#" class="action-btn"><i class="fas fa-link"></i> Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Dr. Jyoti Sekhar Banerjee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .content-box {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        .content-box:hover {
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent);
+        }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+        .info-item {
+            background-color: rgba(16, 185, 129, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            padding: 1.2rem;
+            transition: var(--transition);
+        }
+        .info-item:hover {
+            background-color: rgba(16, 185, 129, 0.1);
+            transform: translateX(4px);
+        }
+        .info-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .info-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        .submit-btn {
+            background-color: var(--accent);
+            color: #000;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .submit-btn:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header class="mobile-header">
+        <h2 class="logo">Dr. J. S. Banerjee</h2>
+        <button class="menu-btn" aria-label="Toggle Sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="name">Dr. Jyoti Sekhar Banerjee</h2>
+            <p class="title">Associate Professor & Head, CSE (AI & ML)</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../about/index.html" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../gallery/index.html" class="nav-link"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../awards/index.html" class="nav-link"><i class="fas fa-award"></i> <span>Awards</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../research/index.html" class="nav-link"><i class="fab fa-researchgate"></i> <span>Research</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../positions/index.html" class="nav-link"><i class="fas fa-briefcase"></i> <span>Positions</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../projects/index.html" class="nav-link"><i class="fas fa-project-diagram"></i> <span>Projects</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../resources/index.html" class="nav-link"><i class="fas fa-file-alt"></i> <span>Resources</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../academic/index.html" class="nav-link"><i class="fas fa-graduation-cap"></i> <span>Academic</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../publications/index.html" class="nav-link"><i class="fas fa-book"></i> <span>Publications</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../invited-talks/index.html" class="nav-link"><i class="fas fa-microphone-alt"></i> <span>Invited Talks</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../workshop/index.html" class="nav-link"><i class="fas fa-laptop"></i> <span>Workshop</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../students/index.html" class="nav-link"><i class="fas fa-users"></i> <span>My Students</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="index.html" class="nav-link active"><i class="fas fa-file-signature"></i> <span>Contact</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="theme-toggle-wrap">
+                <span class="theme-toggle-text">Theme</span>
+                <label class="switch" for="theme-switch">
+                    <input type="checkbox" id="theme-switch">
+                    <div class="slider">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </label>
+            </div>
+            <div class="social-links">
+                <a href="#" target="_blank" aria-label="Google Scholar"><i class="fa-brands fa-google"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
+        <section class="section fade-in">
+            <div style="padding: 2rem;">
+                <h1 class="section-title"><i class="fas fa-envelope"></i> Contact Me</h1>
+                
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h3><i class="fas fa-map-marker-alt"></i> Office Address</h3>
+                        <p>Computer Science & Engineering Department<br>Techno Bengal Institute of Technology<br>Kolkata, West Bengal, India</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3><i class="fas fa-phone"></i> Phone</h3>
+                        <p>Office: +91 XXXXX XXXXX<br>Mobile: +91 XXXXX XXXXX</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <p>Official: jsb@technobenagal.ac.in<br>Personal: jsbanerjee@example.com</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3><i class="fas fa-clock"></i> Office Hours</h3>
+                        <p>Monday - Friday: 10:00 AM - 5:00 PM<br>By appointment recommended</p>
+                    </div>
+                </div>
+
+                <div class="content-box" style="margin-top: 2rem;">
+                    <h2 style="color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-paper-plane"></i> Send a Message</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn"><i class="fas fa-send"></i> Send Message</button>
+                    </form>
+                </div>
+
+                <div class="content-box">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-link"></i> Connect on Social Media</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Find me on various platforms:</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="#" style="background-color: var(--accent); color: #000; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 500; transition: var(--transition);" onmouseover="this.style.backgroundColor='var(--accent-hover)'" onmouseout="this.style.backgroundColor='var(--accent)'"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="#" style="background-color: var(--accent); color: #000; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 500; transition: var(--transition);" onmouseover="this.style.backgroundColor='var(--accent-hover)'" onmouseout="this.style.backgroundColor='var(--accent)'"><i class="fab fa-researchgate"></i> ResearchGate</a>
+                        <a href="#" style="background-color: var(--accent); color: #000; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 500; transition: var(--transition);" onmouseover="this.style.backgroundColor='var(--accent-hover)'" onmouseout="this.style.backgroundColor='var(--accent)'"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="#" style="background-color: var(--accent); color: #000; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 500; transition: var(--transition);" onmouseover="this.style.backgroundColor='var(--accent-hover)'" onmouseout="this.style.backgroundColor='var(--accent)'"><i class="fab fa-google"></i> Google Scholar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

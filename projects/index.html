@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Dr. Jyoti Sekhar Banerjee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .project-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .project-card:hover {
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        .project-card h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .project-card .meta {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+        .project-card p {
+            color: var(--text-secondary);
+            flex-grow: 1;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .tech-tag {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+        .subsection-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header class="mobile-header">
+        <h2 class="logo">Dr. J. S. Banerjee</h2>
+        <button class="menu-btn" aria-label="Toggle Sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="name">Dr. Jyoti Sekhar Banerjee</h2>
+            <p class="title">Associate Professor & Head, CSE (AI & ML)</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../about/index.html" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../gallery/index.html" class="nav-link"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../awards/index.html" class="nav-link"><i class="fas fa-award"></i> <span>Awards</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../research/index.html" class="nav-link"><i class="fab fa-researchgate"></i> <span>Research</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../positions/index.html" class="nav-link"><i class="fas fa-briefcase"></i> <span>Positions</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="index.html" class="nav-link active"><i class="fas fa-project-diagram"></i> <span>Projects</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../resources/index.html" class="nav-link"><i class="fas fa-file-alt"></i> <span>Resources</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../academic/index.html" class="nav-link"><i class="fas fa-graduation-cap"></i> <span>Academic</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../publications/index.html" class="nav-link"><i class="fas fa-book"></i> <span>Publications</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../invited-talks/index.html" class="nav-link"><i class="fas fa-microphone-alt"></i> <span>Invited Talks</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../workshop/index.html" class="nav-link"><i class="fas fa-laptop"></i> <span>Workshop</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../students/index.html" class="nav-link"><i class="fas fa-users"></i> <span>My Students</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../contact/index.html" class="nav-link"><i class="fas fa-file-signature"></i> <span>Contact</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="theme-toggle-wrap">
+                <span class="theme-toggle-text">Theme</span>
+                <label class="switch" for="theme-switch">
+                    <input type="checkbox" id="theme-switch">
+                    <div class="slider">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </label>
+            </div>
+            <div class="social-links">
+                <a href="#" target="_blank" aria-label="Google Scholar"><i class="fa-brands fa-google"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
+        <section class="section fade-in">
+            <div style="padding: 2rem;">
+                <h1 class="section-title"><i class="fas fa-project-diagram"></i> Research Projects</h1>
+                
+                <div class="subsection-title"><i class="fas fa-flask"></i> Active Projects</div>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3><i class="fas fa-brain"></i> AI for Healthcare</h3>
+                        <div class="meta"><i class="fas fa-calendar"></i> 2024-2026</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Developing machine learning models for medical diagnosis and patient care optimization.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Data Science</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3><i class="fas fa-language"></i> NLP for Indian Languages</h3>
+                        <div class="meta"><i class="fas fa-calendar"></i> 2024-2025</div>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation. Processing and analysis of Indian regional languages with deep learning.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">BERT</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3><i class="fas fa-chart-line"></i> Anomaly Detection Systems</h3>
+                        <div class="meta"><i class="fas fa-calendar"></i> 2023-2024</div>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse. Building robust systems for anomaly detection in industrial applications.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">Real-time</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3><i class="fas fa-network-wired"></i> Smart City IoT</h3>
+                        <div class="meta"><i class="fas fa-calendar"></i> 2023-2025</div>
+                        <p>Excepteur sint occaecat cupidatat non proident. Implementing IoT solutions for smart city infrastructure and resource management.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">Edge Computing</span>
+                            <span class="tech-tag">Sensors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection-title" style="margin-top: 3rem;"><i class="fas fa-history"></i> Completed Projects</div>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3><i class="fas fa-image"></i> Computer Vision Applications</h3>
+                        <div class="meta"><i class="fas fa-calendar"></i> 2022-2023</div>
+                        <p>Sed ut perspiciatis unde omnis iste natus error. Successfully developed computer vision solutions for object detection and classification.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">YOLO</span>
+                            <span class="tech-tag">CNN</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3><i class="fas fa-database"></i> Big Data Analytics</h3>
+                        <div class="meta"><i class="fas fa-calendar"></i> 2021-2023</div>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur. Processing and analyzing large-scale datasets for business intelligence.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Hadoop</span>
+                            <span class="tech-tag">Spark</span>
+                            <span class="tech-tag">SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3><i class="fas fa-bot"></i> Chatbot Development</h3>
+                        <div class="meta"><i class="fas fa-calendar"></i> 2021-2022</div>
+                        <p>Et quasi architecto beatae vitae dicta sunt explicabo. Building conversational AI chatbots for customer service applications.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Dialogflow</span>
+                            <span class="tech-tag">Chatbot</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3><i class="fas fa-shield-alt"></i> Cybersecurity AI</h3>
+                        <div class="meta"><i class="fas fa-calendar"></i> 2020-2021</div>
+                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">ML</span>
+                            <span class="tech-tag">Security</span>
+                            <span class="tech-tag">Threat Detection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

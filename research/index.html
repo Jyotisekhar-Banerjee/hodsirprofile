@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Dr. Jyoti Sekhar Banerjee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .content-box {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        .content-box:hover {
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent);
+        }
+        .content-box h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.2rem;
+        }
+        .content-box p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+        .item-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .item-list li {
+            padding: 0.6rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+        .item-list li:before {
+            content: "▸ ";
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header class="mobile-header">
+        <h2 class="logo">Dr. J. S. Banerjee</h2>
+        <button class="menu-btn" aria-label="Toggle Sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="name">Dr. Jyoti Sekhar Banerjee</h2>
+            <p class="title">Associate Professor & Head, CSE (AI & ML)</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../about/index.html" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../gallery/index.html" class="nav-link"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../awards/index.html" class="nav-link"><i class="fas fa-award"></i> <span>Awards</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="index.html" class="nav-link active"><i class="fab fa-researchgate"></i> <span>Research</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../positions/index.html" class="nav-link"><i class="fas fa-briefcase"></i> <span>Positions</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../projects/index.html" class="nav-link"><i class="fas fa-project-diagram"></i> <span>Projects</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../resources/index.html" class="nav-link"><i class="fas fa-file-alt"></i> <span>Resources</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../academic/index.html" class="nav-link"><i class="fas fa-graduation-cap"></i> <span>Academic</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../publications/index.html" class="nav-link"><i class="fas fa-book"></i> <span>Publications</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../invited-talks/index.html" class="nav-link"><i class="fas fa-microphone-alt"></i> <span>Invited Talks</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../workshop/index.html" class="nav-link"><i class="fas fa-laptop"></i> <span>Workshop</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../students/index.html" class="nav-link"><i class="fas fa-users"></i> <span>My Students</span></a></li>
+            <li class="nav-item" style="border-bottom: 1px solid rgba(150,150,150,0.1); padding-bottom: 0.2rem; padding-top: 0.2rem;"><a href="../contact/index.html" class="nav-link"><i class="fas fa-file-signature"></i> <span>Contact</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="theme-toggle-wrap">
+                <span class="theme-toggle-text">Theme</span>
+                <label class="switch" for="theme-switch">
+                    <input type="checkbox" id="theme-switch">
+                    <div class="slider">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </label>
+            </div>
+            <div class="social-links">
+                <a href="#" target="_blank" aria-label="Google Scholar"><i class="fa-brands fa-google"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
+        <section class="section fade-in">
+            <div style="padding: 2rem;">
+                <h1 class="section-title"><i class="fas fa-flask-vial"></i> Research Areas</h1>
+                
+                <div class="grid-3">
+                    <div class="content-box">
+                        <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <ul class="item-list">
+                            <li>Supervised Learning</li>
+                            <li>Unsupervised Learning</li>
+                            <li>Deep Learning</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-box">
+                        <h3><i class="fas fa-language"></i> Natural Language Processing</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
+                        <ul class="item-list">
+                            <li>Text Mining</li>
+                            <li>Sentiment Analysis</li>
+                            <li>Named Entity Recognition</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-box">
+                        <h3><i class="fas fa-chart-line"></i> Data Analysis</h3>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>
+                        <ul class="item-list">
+                            <li>Big Data Processing</li>
+                            <li>Statistical Analysis</li>
+                            <li>Visualization</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-box">
+                        <h3><i class="fas fa-puzzle-piece"></i> Pattern Recognition</h3>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
+                        <ul class="item-list">
+                            <li>Image Recognition</li>
+                            <li>Signal Processing</li>
+                            <li>Feature Extraction</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-box">
+                        <h3><i class="fas fa-cog"></i> Optimization</h3>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                        <ul class="item-list">
+                            <li>Algorithm Design</li>
+                            <li>Performance Tuning</li>
+                            <li>Resource Optimization</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-box">
+                        <h3><i class="fas fa-network-wired"></i> AI Applications</h3>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+                        <ul class="item-list">
+                            <li>Computer Vision</li>
+                            <li>Robotics</li>
+                            <li>Smart Systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box" style="margin-top: 2rem;">
+                    <h3><i class="fas fa-lightbulb"></i> Current Research Focus</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p style="margin-top: 1rem;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
