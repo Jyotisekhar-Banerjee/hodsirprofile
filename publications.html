@@ -102,6 +102,56 @@
             font-size: 0.85rem;
             font-weight: 600;
         }
+        /* Category Cards */
+        .pub-category-card {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem 1.8rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .pub-category-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.18);
+            transform: translateY(-4px);
+        }
+        .pub-cat-icon {
+            font-size: 2.4rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .pub-cat-body h2 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+        .pub-cat-body p {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+        .pub-cat-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent);
+            color: #000;
+            padding: 0.45rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: var(--transition);
+            width: fit-content;
+        }
+        .pub-category-card:hover .pub-cat-btn {
+            background-color: var(--accent-hover);
+        }
     </style>
 </head>
 <body class="dark-mode">
@@ -158,70 +208,64 @@
         <section class="section fade-in">
             <div style="padding: 2rem;">
                 <h1 class="section-title"><i class="fas fa-book"></i> Publications</h1>
-                
-                <div class="content-box" style="background-color: rgba(16, 185, 129, 0.1); border: 2px solid var(--accent);">
+
+                <!-- Stats Banner -->
+                <div class="content-box" style="background-color: rgba(16, 185, 129, 0.1); border: 2px solid var(--accent); margin-bottom: 2.5rem;">
                     <h3><i class="fas fa-chart-pie"></i> Publication Statistics</h3>
-                    <p>Total Publications: <span class="counter">45+</span> | Journals: <span class="counter">28</span> | Conferences: <span class="counter">17</span></p>
+                    <p>Total Publications: <span class="counter">45+</span> &nbsp;|&nbsp; Journals: <span class="counter">28</span> &nbsp;|&nbsp; Conferences: <span class="counter">17</span> &nbsp;|&nbsp; Books &amp; Chapters: <span class="counter">5+</span></p>
                 </div>
 
-                <div class="subsection-title"><i class="fas fa-newspaper"></i> Journals</div>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1rem; line-height: 1.7;">
+                    Browse publications by category. Click a card to view the full list with links, citations, and DOIs.
+                </p>
 
-                <div class="publication-item">
-                    <div class="meta"><i class="fas fa-calendar"></i> 2024 | <i class="fas fa-star"></i> Q1 Journal</div>
-                    <h4>Lorem Ipsum: A Novel Approach to Machine Learning Optimization</h4>
-                    <p class="description">Authors: Dr. Jyoti Sekhar Banerjee, Co-author Name</p>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. A comprehensive study on advanced optimization techniques for deep learning models.</p>
-                    <a href="#" class="pub-link"><i class="fas fa-link"></i> View Paper</a>
-                    <a href="#" class="pub-link"><i class="fas fa-quote-left"></i> Citation</a>
+                <!-- Category Cards -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+
+                    <!-- Books Card -->
+                    <a href="publication_extended/books.html" class="pub-category-card" id="pub-books">
+                        <div class="pub-cat-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="pub-cat-body">
+                            <h2>Books &amp; Chapters</h2>
+                            <p>Authored books, edited volumes, and contributed book chapters published by leading international publishers.</p>
+                            <span class="pub-cat-btn"><i class="fas fa-arrow-right"></i> View Books</span>
+                        </div>
+                    </a>
+
+                    <!-- Journals Card -->
+                    <a href="publication_extended/journals.html" class="pub-category-card" id="pub-journals">
+                        <div class="pub-cat-icon"><i class="fas fa-newspaper"></i></div>
+                        <div class="pub-cat-body">
+                            <h2>Journal Publications</h2>
+                            <p>Peer-reviewed articles published in SCI, SCIE, Scopus-indexed Q1/Q2 international journals.</p>
+                            <span class="pub-cat-btn"><i class="fas fa-arrow-right"></i> View Journals</span>
+                        </div>
+                    </a>
+
+                    <!-- Conferences Card -->
+                    <a href="publication_extended/conferences.html" class="pub-category-card" id="pub-conferences">
+                        <div class="pub-cat-icon"><i class="fas fa-users"></i></div>
+                        <div class="pub-cat-body">
+                            <h2>Conference Publications</h2>
+                            <p>Papers presented and published in proceedings of international and national conferences (IEEE, Springer, etc.).</p>
+                            <span class="pub-cat-btn"><i class="fas fa-arrow-right"></i> View Conferences</span>
+                        </div>
+                    </a>
+
                 </div>
 
-                <div class="publication-item">
-                    <div class="meta"><i class="fas fa-calendar"></i> 2023 | <i class="fas fa-star"></i> Q1 Journal</div>
-                    <h4>Advanced NLP Techniques for Multilingual Text Processing</h4>
-                    <p class="description">Authors: Dr. Jyoti Sekhar Banerjee, Co-author Name</p>
-                    <p class="description">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Exploring state-of-the-art natural language processing methods.</p>
-                    <a href="#" class="pub-link"><i class="fas fa-link"></i> View Paper</a>
-                    <a href="#" class="pub-link"><i class="fas fa-quote-left"></i> Citation</a>
+                <!-- Academic Profile Links -->
+                <div class="content-box" style="margin-top: 2.5rem;">
+                    <h3><i class="fas fa-link"></i> View Full Publication List Online</h3>
+                    <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                        <a href="https://scholar.google.com/citations?user=yMbHYgoAAAAJ&hl=en" target="_blank" rel="noopener" class="pub-link"><i class="fab fa-google"></i> Google Scholar</a>
+                        <a href="https://www.researchgate.net/profile/Jyoti-Sekhar-Banerjee" target="_blank" rel="noopener" class="pub-link"><i class="fab fa-researchgate"></i> ResearchGate</a>
+                        <a href="https://orcid.org/0000-0001-7896-5206" target="_blank" rel="noopener" class="pub-link"><i class="fas fa-id-badge"></i> ORCID</a>
+                        <a href="https://www.scopus.com/authid/detail.uri?authorId=56016851400" target="_blank" rel="noopener" class="pub-link"><i class="fas fa-database"></i> Scopus</a>
+                        <a href="https://www.webofscience.com/wos/author/record/E-7218-2018" target="_blank" rel="noopener" class="pub-link"><i class="fas fa-globe"></i> Web of Science</a>
+                    </div>
                 </div>
 
-                <div class="publication-item">
-                    <div class="meta"><i class="fas fa-calendar"></i> 2022 | <i class="fas fa-star"></i> Q2 Journal</div>
-                    <h4>Deep Learning Applications in Computer Vision</h4>
-                    <p class="description">Authors: Dr. Jyoti Sekhar Banerjee, Co-author Name</p>
-                    <p class="description">Ut enim ad minim veniam, quis nostrud exercitation. Review of cutting-edge computer vision methodologies.</p>
-                    <a href="#" class="pub-link"><i class="fas fa-link"></i> View Paper</a>
-                    <a href="#" class="pub-link"><i class="fas fa-quote-left"></i> Citation</a>
-                </div>
-
-                <div class="subsection-title" style="margin-top: 3rem;"><i class="fas fa-users"></i> Conference Papers</div>
-
-                <div class="publication-item">
-                    <div class="meta"><i class="fas fa-calendar"></i> 2024 | <i class="fas fa-trophy"></i> Proceedings</div>
-                    <h4>Pattern Recognition in Large Scale Data: A Distributed Approach</h4>
-                    <p class="description">International Conference on Machine Learning and AI</p>
-                    <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse. Novel distributed algorithms for large-scale pattern recognition.</p>
-                    <a href="#" class="pub-link"><i class="fas fa-link"></i> View Paper</a>
-                    <a href="#" class="pub-link"><i class="fas fa-quote-left"></i> Citation</a>
-                </div>
-
-                <div class="publication-item">
-                    <div class="meta"><i class="fas fa-calendar"></i> 2023 | <i class="fas fa-trophy"></i> Proceedings</div>
-                    <h4>Optimization Techniques for Neural Network Training</h4>
-                    <p class="description">Annual Symposium on Artificial Intelligence</p>
-                    <p class="description">Excepteur sint occaecat cupidatat non proident. Comparative analysis of modern optimization algorithms.</p>
-                    <a href="#" class="pub-link"><i class="fas fa-link"></i> View Paper</a>
-                    <a href="#" class="pub-link"><i class="fas fa-quote-left"></i> Citation</a>
-                </div>
-
-                <div class="subsection-title" style="margin-top: 3rem;"><i class="fas fa-book-open"></i> Books & Chapters</div>
-
-                <div class="publication-item">
-                    <div class="meta"><i class="fas fa-calendar"></i> 2023 | <i class="fas fa-book"></i> Book Chapter</div>
-                    <h4>Machine Learning for Real-World Applications</h4>
-                    <p class="description">Chapter in: Advanced Topics in Artificial Intelligence, Published by Springer</p>
-                    <p class="description">Sed ut perspiciatis unde omnis iste natus error. Comprehensive overview of practical ML applications in industry.</p>
-                    <a href="#" class="pub-link"><i class="fas fa-link"></i> View Chapter</a>
-                </div>
             </div>
         </section>
     </main>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Chapters - Dr. Jyoti Sekhar Banerjee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+        .back-btn:hover {
+            background-color: var(--accent);
+            color: #000;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+        .book-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        .book-card:hover {
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .book-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            min-width: 50px;
+            text-align: center;
+            padding-top: 0.3rem;
+        }
+        .book-body h3 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+        }
+        .book-meta {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .book-body p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .tag {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.12);
+            color: var(--accent);
+            border-radius: 4px;
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: var(--accent);
+            color: #000;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-right: 0.5rem;
+            margin-top: 0.3rem;
+        }
+        .pub-link:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.05);
+        }
+        .pub-link.outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        .pub-link.outline:hover {
+            background-color: var(--accent);
+            color: #000;
+        }
+        @media (max-width: 600px) {
+            .book-card { flex-direction: column; }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header class="mobile-header">
+        <h2 class="logo">Dr. J. S. Banerjee</h2>
+        <button class="menu-btn" aria-label="Toggle Sidebar"><i class="fas fa-bars"></i></button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="name">Dr. Jyoti Sekhar Banerjee</h2>
+            <p class="title">Associate Professor &amp; Head, CSE (AI &amp; ML)</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../about.html" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../gallery.html" class="nav-link"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../awards.html" class="nav-link"><i class="fas fa-award"></i> <span>Awards</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../research.html" class="nav-link"><i class="fab fa-researchgate"></i> <span>Research</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../positions.html" class="nav-link"><i class="fas fa-briefcase"></i> <span>Positions</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../projects.html" class="nav-link"><i class="fas fa-project-diagram"></i> <span>Projects</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../resources.html" class="nav-link"><i class="fas fa-file-alt"></i> <span>Resources</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../academic.html" class="nav-link"><i class="fas fa-graduation-cap"></i> <span>Academic</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../publications.html" class="nav-link active"><i class="fas fa-book"></i> <span>Publications</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../invited-talks.html" class="nav-link"><i class="fas fa-microphone-alt"></i> <span>Invited Talks</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../workshop.html" class="nav-link"><i class="fas fa-laptop"></i> <span>Workshop</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../students.html" class="nav-link"><i class="fas fa-users"></i> <span>My Students</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../contact.html" class="nav-link"><i class="fas fa-file-signature"></i> <span>Contact</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="theme-toggle-wrap">
+                <span class="theme-toggle-text">Theme</span>
+                <label class="switch" for="theme-switch">
+                    <input type="checkbox" id="theme-switch">
+                    <div class="slider"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></div>
+                </label>
+            </div>
+            <div class="social-links">
+                <a href="https://scholar.google.com/citations?user=yMbHYgoAAAAJ&hl=en" target="_blank" aria-label="Google Scholar"><i class="fa-brands fa-google"></i></a>
+                <a href="https://www.researchgate.net/profile/Jyoti-Sekhar-Banerjee" target="_blank" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                <a href="https://orcid.org/0000-0001-7896-5206" target="_blank" aria-label="ORCID"><i class="fas fa-id-badge"></i></a>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
+        <section class="section fade-in">
+            <div style="padding: 2rem;">
+                <a href="../publications.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Publications</a>
+                <h1 class="section-title"><i class="fas fa-book-open"></i> Books &amp; Chapters</h1>
+
+                <!-- Add real book entries below. Template shown. -->
+                <div class="book-card">
+                    <div class="book-icon"><i class="fas fa-book"></i></div>
+                    <div class="book-body">
+                        <span class="tag">Book</span>
+                        <h3>Title of Book — Add Full Title Here</h3>
+                        <div class="book-meta">
+                            <span><i class="fas fa-user-edit"></i> Dr. Jyoti Sekhar Banerjee et al.</span>
+                            <span><i class="fas fa-calendar"></i> Year: 20XX</span>
+                            <span><i class="fas fa-building"></i> Publisher: Add Publisher</span>
+                        </div>
+                        <p>Add a short description or abstract of the book here. Include the ISBN, edition, and any other relevant details.</p>
+                        <a href="#" class="pub-link"><i class="fas fa-shopping-cart"></i> Buy Online</a>
+                        <a href="#" class="pub-link outline"><i class="fas fa-info-circle"></i> More Info</a>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="book-body">
+                        <span class="tag">Book Chapter</span>
+                        <h3>Title of Chapter — Add Full Title Here</h3>
+                        <div class="book-meta">
+                            <span><i class="fas fa-user-edit"></i> Dr. Jyoti Sekhar Banerjee et al.</span>
+                            <span><i class="fas fa-calendar"></i> Year: 20XX</span>
+                            <span><i class="fas fa-building"></i> Published in: Add Book/Publisher</span>
+                        </div>
+                        <p>Add a short description of the chapter here. Include the page range, DOI, and any other relevant details.</p>
+                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> View Chapter</a>
+                        <a href="#" class="pub-link outline"><i class="fas fa-quote-left"></i> Cite</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

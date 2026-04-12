@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Publications - Dr. Jyoti Sekhar Banerjee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+        .back-btn:hover { background-color: var(--accent); color: #000; }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+        .journal-filter {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .filter-btn {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--accent);
+            color: #000;
+            border-color: var(--accent);
+        }
+        .publication-item {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 10px;
+            padding: 1.4rem 1.6rem;
+            margin-bottom: 1.2rem;
+            transition: var(--transition);
+        }
+        .publication-item:hover {
+            box-shadow: var(--card-shadow);
+            transform: translateX(4px);
+        }
+        .pub-number {
+            float: right;
+            background-color: rgba(16,185,129,0.12);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+        .pub-title {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+        }
+        .pub-authors {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+        .pub-venue {
+            color: var(--accent);
+            font-size: 0.88rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 0.4rem;
+        }
+        .badge-q1 { background-color: rgba(16,185,129,0.2); color: var(--accent); }
+        .badge-q2 { background-color: rgba(59,130,246,0.2); color: #60a5fa; }
+        .badge-sci { background-color: rgba(245,158,11,0.2); color: #fbbf24; }
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: var(--accent);
+            color: #000;
+            padding: 0.35rem 0.9rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-right: 0.4rem;
+            margin-top: 0.3rem;
+        }
+        .pub-link:hover { background-color: var(--accent-hover); transform: scale(1.05); }
+        .pub-link.outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        .pub-link.outline:hover { background-color: var(--accent); color: #000; }
+    </style>
+</head>
+<body class="dark-mode">
+    <header class="mobile-header">
+        <h2 class="logo">Dr. J. S. Banerjee</h2>
+        <button class="menu-btn" aria-label="Toggle Sidebar"><i class="fas fa-bars"></i></button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="name">Dr. Jyoti Sekhar Banerjee</h2>
+            <p class="title">Associate Professor &amp; Head, CSE (AI &amp; ML)</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../about.html" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../gallery.html" class="nav-link"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../awards.html" class="nav-link"><i class="fas fa-award"></i> <span>Awards</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../research.html" class="nav-link"><i class="fab fa-researchgate"></i> <span>Research</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../positions.html" class="nav-link"><i class="fas fa-briefcase"></i> <span>Positions</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../projects.html" class="nav-link"><i class="fas fa-project-diagram"></i> <span>Projects</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../resources.html" class="nav-link"><i class="fas fa-file-alt"></i> <span>Resources</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../academic.html" class="nav-link"><i class="fas fa-graduation-cap"></i> <span>Academic</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../publications.html" class="nav-link active"><i class="fas fa-book"></i> <span>Publications</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../invited-talks.html" class="nav-link"><i class="fas fa-microphone-alt"></i> <span>Invited Talks</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../workshop.html" class="nav-link"><i class="fas fa-laptop"></i> <span>Workshop</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../students.html" class="nav-link"><i class="fas fa-users"></i> <span>My Students</span></a></li>
+            <li class="nav-item" style="border-bottom:1px solid rgba(150,150,150,0.1);padding-bottom:.2rem;padding-top:.2rem;"><a href="../contact.html" class="nav-link"><i class="fas fa-file-signature"></i> <span>Contact</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="theme-toggle-wrap">
+                <span class="theme-toggle-text">Theme</span>
+                <label class="switch" for="theme-switch">
+                    <input type="checkbox" id="theme-switch">
+                    <div class="slider"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></div>
+                </label>
+            </div>
+            <div class="social-links">
+                <a href="https://scholar.google.com/citations?user=yMbHYgoAAAAJ&hl=en" target="_blank" aria-label="Google Scholar"><i class="fa-brands fa-google"></i></a>
+                <a href="https://www.researchgate.net/profile/Jyoti-Sekhar-Banerjee" target="_blank" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                <a href="https://orcid.org/0000-0001-7896-5206" target="_blank" aria-label="ORCID"><i class="fas fa-id-badge"></i></a>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
+        <section class="section fade-in">
+            <div style="padding: 2rem;">
+                <a href="../publications.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Publications</a>
+                <h1 class="section-title"><i class="fas fa-newspaper"></i> Journal Publications</h1>
+
+                <div class="journal-filter">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Q1</button>
+                    <button class="filter-btn">Q2</button>
+                    <button class="filter-btn">SCI / SCIE</button>
+                    <button class="filter-btn">Scopus</button>
+                </div>
+
+                <!-- Add real journal entries here. Template shown. -->
+                <div class="publication-item">
+                    <span class="pub-number">#1</span>
+                    <span class="badge badge-q1">Q1</span>
+                    <span class="badge badge-sci">SCI</span>
+                    <div class="pub-title">Add Full Paper Title Here</div>
+                    <div class="pub-authors">Dr. Jyoti Sekhar Banerjee, Co-author Name, ...</div>
+                    <div class="pub-venue"><i class="fas fa-journal-whills"></i> Journal Name, Vol. X, No. X, pp. XX–XX, Year. DOI: 10.XXXX/XXXXXX</div>
+                    <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> View Paper</a>
+                    <a href="#" class="pub-link outline"><i class="fas fa-quote-left"></i> Cite</a>
+                </div>
+
+                <div class="publication-item">
+                    <span class="pub-number">#2</span>
+                    <span class="badge badge-q2">Q2</span>
+                    <div class="pub-title">Add Full Paper Title Here</div>
+                    <div class="pub-authors">Dr. Jyoti Sekhar Banerjee, Co-author Name, ...</div>
+                    <div class="pub-venue"><i class="fas fa-journal-whills"></i> Journal Name, Vol. X, No. X, pp. XX–XX, Year. DOI: 10.XXXX/XXXXXX</div>
+                    <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> View Paper</a>
+                    <a href="#" class="pub-link outline"><i class="fas fa-quote-left"></i> Cite</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
